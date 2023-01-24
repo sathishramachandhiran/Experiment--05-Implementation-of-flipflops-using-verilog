@@ -102,39 +102,116 @@ Q(t+1)=T′Q(t)+TQ(t)′
 ⇒Q(t+1)=T⊕Q(t)
 
 ### Procedure
-/* write all the steps invloved */
-
-
+```
+STEP 1:
+  Using nand gates and wires construct sr flip flop.
+STEP 2:
+  Repeat same steps to construct JK,D,T flipflops.
+STEP 3:
+  Find RTL logic and timing diagram for all flipflops.
+STEP 4:
+  End the program.
+```
 
 ### PROGRAM 
-/*
+```
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
-*/
+Developed by: SATHISH R
+RegisterNumber: 22009045 
+```
+### PROGRAM FOR SR FLIPFLOP :
+```
+module SR(S,R,clock,Q,Qbar);
+input S,R,clock;
+output Q,Qbar;
+wire X,Y;
+nand(X,S,clock);
+nand(Y,R,clock);
+nand(Q,X,Qbar);
+nand(Qbar,Y,Q);
+endmodule
+```
 
+### PROGRAM FOR JK FLIPFLOP :
+```
+module JK(J,K,clock,Q,Qbar);
+input J,K,clock;
+output Q,Qbar;
+wire P,S;
+nand(P,J,clock,Qbar);
+nand(S,K,clock,Q);
+nand(Q,P,Qbar);
+nand(Qbar,S,Q);
+endmodule
+```
 
+### PROGRAM FOR D FLIPFLOP :
+```
+module D(D,clock,Q,Qbar);
+input D,clock;
+output Q,Qbar;
+assign Dbar = ~D;
+wire X,Y;
+nand(X,D,clock);
+nand(Y,Dbar,clock);
+nand(Q,X,Qbar);
+nand(Qbar,Y,Q);
+endmodule
+```
 
-
-
+### PROGRAM FOR T FLIPFLOP :
+```
+module T(T,clock,Q,Qbar);
+input T,clock;
+output Q,Qbar;
+wire A,B;
+nand(A,T,clock,Qbar);
+nand(B,T,clock,Q);
+nand(Q,A,Qbar);
+nand(Qbar,B,Q);
+endmodule
+```
 
 ### RTL LOGIC FOR FLIPFLOPS 
 
+### RTL OF SR FLIPFLOP:
+
+![SR RTL](https://user-images.githubusercontent.com/120574768/214289329-0e360a8d-fee0-497b-a3a6-fb071e6a5100.png)
+
+### RTL OF JK FLIPFLOP:
+
+![JK RTL](https://user-images.githubusercontent.com/120574768/214289336-88dbe5c6-28da-4c34-b3d5-6253da533c2d.png)
+
+### RTL OF D FLIPFLOP:
+
+![D RTL](https://user-images.githubusercontent.com/120574768/214289356-239bd29b-fe14-4217-964f-dd6490b84615.png)
+
+### RTL OF T FLIPFLOP:
+
+![T RTL](https://user-images.githubusercontent.com/120574768/214289362-10bca46e-aacb-4c46-bb0a-4bb1656ce0f8.png)
+
+
+### TIMING DIGRAMS FOR FLIP FLOPS :
+
+### TIMING DIGRAM FOR SR FLIP FLOP :
+
+![SR TD](https://user-images.githubusercontent.com/120574768/214289373-02fb8702-f638-4882-bf0d-6d77cd04a011.png)
+
+### TIMING DIGRAM FOR JK FLIP FLOP :
+
+![JK TD](https://user-images.githubusercontent.com/120574768/214289381-2182514b-a472-4a5f-8100-1f6eb121e38e.png)
+
+### TIMING DIGRAM FOR D FLIP FLOP :
+
+![D TD](https://user-images.githubusercontent.com/120574768/214289391-60860c27-047c-495b-b5ed-f37137eb2509.png)
+
+### TIMING DIGRAM FOR T FLIP FLOP :
+
+![T TD](https://user-images.githubusercontent.com/120574768/214289399-99f0814a-fd41-4ac9-90ed-6305dbf12c24.png)
 
 
 
+### RESULTS :
 
+Thus, implementation of SR,JK,D and T flipflops using nand gates are done sucessfully.
 
-
-
-
-### TIMING DIGRAMS FOR FLIP FLOPS 
-
-
-
-
-
-
-
-
-### RESULTS 
